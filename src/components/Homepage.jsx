@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Select, Card, Skeleton } from "antd";
-import { header, center } from "./Homepage.module.css";
+import { header, center, marginBottom } from "./Homepage.module.css";
 import { getAllBreeds, getAllDogs } from "../utils/services";
 import { toast } from "react-toastify";
 
 const { Option } = Select;
+const { Meta } = Card;
 
 function Homepage() {
   const [breeds, setBreeds] = useState(null);
@@ -54,7 +55,7 @@ function Homepage() {
 
   return (
     <div>
-      <div className={header}>DOGS 🐕</div>
+      <div className={header}>🐕 DOGS 💗 </div>
       <div>
         <Row className={center}>
           <Col xl={8} lg={8} md={8} sm={24} xs={24}></Col>
@@ -88,13 +89,23 @@ function Homepage() {
               {images
                 ? images.map((url, i) => {
                     return (
-                      <Col key={i} xl={8} lg={8} md={12} sm={24} xs={24}>
+                      <Col
+                        key={i}
+                        xl={8}
+                        lg={8}
+                        md={12}
+                        sm={24}
+                        xs={24}
+                        className={marginBottom}
+                      >
                         <Card
                           hoverable
                           style={{ width: 240 }}
                           cover={<img alt="img" src={url} />}
                           onClick={() => onLike(url)}
-                        ></Card>
+                        >
+                          <Meta title={url.slice(30)} />
+                        </Card>
                       </Col>
                     );
                   })
@@ -104,30 +115,42 @@ function Homepage() {
           <Col xl={4} lg={4} md={4} sm={0} xs={0}></Col>
         </Row>
       </Skeleton>
-      <div className={header}>Liked Dogs</div>
-      <div>
-        <Row>
-          <Col xl={4} lg={4} md={4} sm={0} xs={0}></Col>
-          <Col xl={16} lg={16} md={16} sm={24} xs={24}>
-            <Row>
-              {liked.length > 0
-                ? liked.map((url, i) => {
-                    return (
-                      <Col key={i} xl={8} lg={8} md={12} sm={24} xs={24}>
-                        <Card
-                          hoverable
-                          style={{ width: 240 }}
-                          cover={<img alt="img" src={url} />}
-                        ></Card>
-                      </Col>
-                    );
-                  })
-                : null}
-            </Row>
-          </Col>
-          <Col xl={4} lg={4} md={4} sm={0} xs={0}></Col>
-        </Row>
-      </div>
+      {liked.length > 0 ? (
+        <div>
+          <div className={header}>Liked Dogs</div>
+          <Row>
+            <Col xl={4} lg={4} md={4} sm={0} xs={0}></Col>
+            <Col xl={16} lg={16} md={16} sm={24} xs={24}>
+              <Row>
+                {liked.length > 0
+                  ? liked.map((url, i) => {
+                      return (
+                        <Col
+                          key={i}
+                          xl={8}
+                          lg={8}
+                          md={12}
+                          sm={24}
+                          xs={24}
+                          className={marginBottom}
+                        >
+                          <Card
+                            hoverable
+                            style={{ width: 240 }}
+                            cover={<img alt="img" src={url} />}
+                          >
+                            <Meta title={url.slice(30)} />
+                          </Card>
+                        </Col>
+                      );
+                    })
+                  : null}
+              </Row>
+            </Col>
+            <Col xl={4} lg={4} md={4} sm={0} xs={0}></Col>
+          </Row>
+        </div>
+      ) : null}
     </div>
   );
 }

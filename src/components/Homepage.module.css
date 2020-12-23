@@ -4,10 +4,14 @@
   font-weight: 700;
   padding-top: 50px;
   padding-bottom: 50px;
-  color: #2f9460;
+  color: #2b6cb0;
 }
 
 .center {
   text-align: center;
   margin-bottom: 50px;
+}
+
+.marginBottom {
+  margin-bottom: 30px;
 }
