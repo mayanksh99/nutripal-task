@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Select, Card, Skeleton } from "antd";
-import { header, center, marginBottom } from "./Homepage.module.css";
+import { header, center, marginBottom, footer } from "./Homepage.module.css";
 import { getAllBreeds, getAllDogs } from "../utils/services";
 import { toast } from "react-toastify";
 
@@ -55,7 +55,7 @@ function Homepage() {
 
   return (
     <div>
-      <div className={header}>🐕 DOGS 💗 </div>
+      <div className={header}>DOGS 🐕</div>
       <div>
         <Row className={center}>
           <Col xl={8} lg={8} md={8} sm={24} xs={24}></Col>
@@ -151,6 +151,7 @@ function Homepage() {
           </Row>
         </div>
       ) : null}
+      <div className={footer}>Dogs are Best 💗 </div>
     </div>
   );
 }

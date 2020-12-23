@@ -15,3 +15,14 @@
 .marginBottom {
   margin-bottom: 30px;
 }
+
+.footer {
+  background-color: #cbd5e0;
+  height: 30px !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgb(81, 81, 81);
+  text-align: center;
+  align-content: middle;
+  padding-bottom: 35px;
+}
