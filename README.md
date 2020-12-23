@@ -9,4 +9,4 @@
 ## How to run
 
 1. Clone the repo
-2. npm i (node required)
+2. run npm i (node required)
